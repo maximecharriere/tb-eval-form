@@ -1,16 +1,18 @@
 \documentclass[a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{geometry}
-\geometry{textwidth=17cm,top=1cm,bottom=0.5cm}
-\usepackage{hyperref}[2012/10/12]
+\usepackage[textwidth=17cm,top=1cm,bottom=0.5cm]{geometry}
+\usepackage{hyperref}
 \usepackage{tabularx,booktabs}
 \usepackage{graphicx}
+\usepackage[french]{babel}
 \usepackage[table]{xcolor}
 \usepackage{tikz}
 \usepackage{multirow}
 \usepackage{sectsty}
 \usepackage{digsig}
+\usepackage{commands}
+
 \setlength\parindent{0pt}
 \allsectionsfont{\normalfont\sffamily\bfseries}
 
@@ -18,145 +20,81 @@
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=north west,yshift=-2cm,xshift=2cm]%
-        at (current page.north west)
-        {\includegraphics[height=2cm]{assets/logos/heig-vd-baseline.pdf}};
-    \end{tikzpicture}
+    at (current page.north west)
+    {\includegraphics[height=2cm]{assets/logos/heig-vd-baseline.pdf}};
+\end{tikzpicture}
 \fontfamily{lmss}\selectfont
 \vspace{3cm}
 \begin{center}
-{\usefont{T1}{lmss}{bx}{n}\huge\selectfont
-Évaluation intermédiaire\\\vspace{0.5em}
-\large{projet multidisciplinaire}\par}%
+    {\usefont{T1}{lmss}{bx}{n}\huge\selectfont
+        Évaluation intermédiaire\\\vspace{0.5em}
+        \large{projet multidisciplinaire}\par}%
 \end{center}
 
+\infosheader{Yves Chevallier}{2021-05-09}{Les chocolats bleus}{Charriere}{Maxime}{EAI}
+\vskip 2em
+
 \begin{Form}
- 
-\begin{tabularx}{\textwidth}{|l|X|l|l|} \hline
-    \textbf{Professeur} & Yves Chevallier & \textbf{Date} & 2021-05-09 \\ \hline
-    \textbf{Titre du projet} & \multicolumn{3}{l|}{Les chocolats bleus} \\ \hline
-    \multirow{2}{*}{\textbf{Étudiants}} & \textbf{Nom} & \textbf{Prénom} & \textbf{Filière} \\
-    & Chevallier & Yves & EAI \\ [2cm] \hline
+    \begin{tabularx}{\textwidth}{|X|c|c|} \hline
+        Critère d'évaluation                                              & Pondération      & Note        \\
+        \hline
+
+        \tr Organisation du projet                                        & \porg            & \sorg       \\[3ex]
+        \hline
+
+        \hs Précision de la spécification                                 & \weight{p2}{10}  & \score{n2}  \\
+        \hs Validation de la spécification                                & \weight{p3}{10}  & \score{n3}  \\
+        \hs Planification du travail                                      & \weight{p4}{10}  & \score{n4}  \\
+        \hs Distribution efficace du travail                              & \weight{p5}{10}  & \score{n5}  \\
+        \hs Suivi régulier du projet                                      & \weight{p6}{10}  & \score{n6}  \\
+        \hline
+
+        \tr Communication                                                 & \pcom            & \scom       \\[3ex]
+        \hline
+
+        \hs Consultation régulière du professeur répondant et des experts & \weight{p8}{10}  & \score{n8}  \\
+        \hs Implication et collaboration de l'équipe                      & \weight{p9}{10}  & \score{n9}  \\
+        \hline
+
+        \tr Technique                                                     & \weight{p10}{10} & \score{n10} \\[3ex]
+        \hline
+
+        \hs Adéquation et aboutissement du concept                        & \weight{p11}{10} & \score{n11} \\
+        \hs Pertinence des choix technologiques                           & \weight{p12}{10} & \score{n12} \\
+        \hline
+
+        \tr Avancement                                                    & \weight{p13}{10} & \score{n13} \\[3ex]
+        \hline
+
+        \hs Respect du planning                                           & \weight{p14}{10} & \score{n14} \\
+        \hline\hline
+
+        \tr \textbf{Évaluation globale}                                            & \textbf{\weight{p15}{10}} & \textbf{\score{n15}} \\[3ex]
+        \hline
+    \end{tabularx}
+
+    \newcommand\clearrow{\global\let\rowmac\relax}
+    \newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
+    \newcolumntype{Y}{>{\centering\arraybackslash\rowmac}X}
+    %
+    \vskip 2em
+    \section*{Échelle d'évaluation}
+    \clearrow
+    \begin{tabularx}{\textwidth}{|*{6}{Y|}Y<{\clearrow}|} \hline
+        \setrow{\bfseries} Excellent & Très bien & Bien      & Satisfaisant & Passable  & Échec     & Échec     \\ \hline
+        A                            & B         & C         & D            & E         & FX        & F         \\ \hline
+        5.8 à 6.0                    & 5.3 à 5.7 & 4.8 à 5.2 & 4.3 à 4.7    & 4.0 à 4.2 & 3.5 à 3.9 & 1.0 à 3.4 \\ \hline
+    \end{tabularx}
 
 
-\end{tabularx}
-\vskip 2em
+    \begin{tabularx}{\textwidth}{p{12cm}X}
+        \section*{Remarques} &                                             \\
+        \noindent\fbox{%
+            \parbox{12cm}{%
+                \TextField[maxlen=2,align=1,height=2cm,width=12cm,name=comment]{}
 
-\newcommand\weight[2]{%
-    \TextField[
-        maxlen=2,align=1,height=10pt,width=1.5cm,name=#1,default=#2,
-        format={AFNumber_Format\string\(0, 2, 0, 0, "\%", false \string\);}]{}
-}
-
-\newcommand\score[1]{%
-    \TextField[
-        maxlen=3,align=1,height=10pt,width=1.5cm,name=#1,default=1.0,
-        calculate={%
-            event.value = Math.min(6.0, Math.max(1.0, this.getField('#1').value))
-        },
-        format={AFNumber_Format\string\(1, 2, 0, 0, "", false \string\);}]{}
-}
-
-\newcommand\porg{%
-    \TextField[maxlen=2,align=1,height=10pt,width=1.5cm,name=p1,
-  calculate={%
-    event.value =
-        this.getField("p2").value +
-        this.getField("p3").value +
-        this.getField("p4").value +
-        this.getField("p5").value +
-        this.getField("p6").value
-  },readonly=true,format={AFNumber_Format\string\(0, 2, 0, 0, "\%", false \string\);}]{}
-}
-
-\newcommand\sorg{%
-    \TextField[maxlen=2,align=1,height=10pt,width=1.5cm,name=n1,
-  calculate={%
-    event.value = (
-        this.getField("p2").value * this.getField("n2").value +
-        this.getField("p3").value * this.getField("n3").value +
-        this.getField("p4").value * this.getField("n4").value +
-        this.getField("p5").value * this.getField("n5").value +
-        this.getField("p6").value * this.getField("n6").value)
-        / this.getField("p1").value
-  }, readonly=true,
-  format={AFNumber_Format\string\(1, 2, 0, 0, "", false \string\);}]{}
-}
-
-\newcommand\pcom{%
-    \TextField[maxlen=2,align=1,height=10pt,width=1.5cm,name=p7,
-  calculate={%
-    event.value =
-        this.getField("p8").value +
-        this.getField("p9").value
-  },readonly=true,
-  format={AFNumber_Format\string\(0, 2, 0, 0, "\%", false \string\);}]{}
-}
-
-\newcommand\scom{%
-    \TextField[maxlen=2,align=1,height=10pt,width=1.5cm,name=n7,
-  calculate={%
-    event.value = (
-        this.getField("p8").value * this.getField("n8").value +
-        this.getField("p9").value * this.getField("n9").value)
-        / this.getField("p7").value
-  }, readonly=true,
-  format={AFNumber_Format\string\(1, 2, 0, 0, "", false \string\);}]{}
-}
-
-
-
-
-\newcommand\hs{\hspace{2em}}
-\newcommand\tr{\rowcolor{lightgray}}
-\renewcommand\tabularxcolumn[1]{m{#1}}
-
-\begin{tabularx}{\textwidth}{|X|c|c|} \hline
-    Critère d'évaluation & Pondération & Note \\\hline
-
-    \tr Organisation du projet                   & \porg            & \sorg \\[3ex] \hline
-    \hs Précision de la spécification            & \weight{p2}{10}  & \score{n2} \\
-    \hs Validation de la spécification           & \weight{p3}{10}  & \score{n3} \\
-    \hs Planification du travail                 & \weight{p4}{10}  & \score{n4} \\
-    \hs Distribution efficace du travail         & \weight{p5}{10}  & \score{n5} \\
-    \hs Suivi régulier du projet                 & \weight{p6}{10}  & \score{n6} \\ \hline
-
-    \tr Communication                            & \pcom  & \scom \\[3ex]
-    \hs Consultation régulière du professeur
-        répondant et des experts                 & \weight{p8}{10}  & \score{n8} \\
-    \hs Implication et collaboration de l'équipe & \weight{p9}{10}  & \score{n9} \\ \hline
-
-    \tr Technique                                & \weight{p10}{10} & \score{n10} \\[3ex]
-    \hs Adéquation et aboutissement du concept   & \weight{p11}{10} & \score{n11} \\
-    \hs Pertinence des choix technologiques      & \weight{p12}{10} & \score{n12} \\ \hline
-
-    \tr Avancement                               & \weight{p13}{10} & \score{n13} \\[3ex]
-    \hs Respect du planning                      & \weight{p14}{10} & \score{n14} \\
-
-    \rowcolor{lightgray} Évaluation globale      & \weight{p15}{10} & \score{n15} \\[3ex] \hline
-\end{tabularx}
-
-\newcommand\clearrow{\global\let\rowmac\relax}
-\newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
-\newcolumntype{Y}{>{\centering\arraybackslash\rowmac}X}
-%
-\vskip 2em
-\section*{Échelle d'évaluation}
-\clearrow
-\begin{tabularx}{\textwidth}{|*{6}{Y|}Y<{\clearrow}|} \hline
-\setrow{\bfseries} Excellent & Très bien & Bien & Satisfaisant & Passable & Échec & Échec \\ \hline
-A & B & C & D & E & FX & F \\ \hline
-5.8 à 6.0 & 5.3 à 5.7 & 4.8 à 5.2 & 4.3 à 4.7 & 4.0 à 4.2 & 3.5 à 3.9 & 1.0 à 3.4 \\ \hline
-\end{tabularx}
-
-
-\begin{tabularx}{\textwidth}{p{12cm}X}
-    \section*{Remarques} &  \\
-\noindent\fbox{%
-\parbox{12cm}{%
-\TextField[maxlen=2,align=1,height=2cm,width=12cm,name=comment]{}
-
-}} & \digsigfield{5cm}{2cm}{} \\
-\end{tabularx}
+        }}                   & \digsigfield{5cm}{2cm}{Teacher's signature} \\
+    \end{tabularx}
 
 \end{Form}
 \end{document}

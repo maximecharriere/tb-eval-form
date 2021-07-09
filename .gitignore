@@ -1,0 +1,12 @@
+build/form.aux
+build/form.fdb_latexmk
+build/form.fls
+build/form.log
+build/form.out
+build/form.synctex.gz
+build/test.aux
+build/test.fdb_latexmk
+build/test.fls
+build/test.log
+build/test.out
+build/test.synctex.gz
