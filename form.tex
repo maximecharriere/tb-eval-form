@@ -13,88 +13,90 @@
 \usepackage{digsig}
 \usepackage{commands}
 
+\newcommand{\projectName}{Les chocolats bleus}
+\newcommand{\proffessorName}{Yves Chevallier}
+\newcommand{\thedate}{2021-05-09}
+\newcommand{\studentName}{Maxime Charrière}
+\newcommand{\studentFieldOfStudy}{EAI}
+\newcommand{\clientName}{Enfant Surprise SA}
+
 \setlength\parindent{0pt}
 \allsectionsfont{\normalfont\sffamily\bfseries}
+
+\pdfpageattr{/AA << %additional actions for pages
+    %on every page open event (/O), add a JavaScript action
+    /O << /S/JavaScript /JS (this.calculateNow();) >>
+  >>}
 
 \begin{document}
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture,overlay]
-    \node[anchor=north west,yshift=-2cm,xshift=2cm]%
+    \node[anchor=north west,yshift=-1cm,xshift=2cm]%
     at (current page.north west)
     {\includegraphics[height=2cm]{assets/logos/heig-vd-baseline.pdf}};
 \end{tikzpicture}
 \fontfamily{lmss}\selectfont
-\vspace{3cm}
+\vspace{2cm}
 \begin{center}
     {\usefont{T1}{lmss}{bx}{n}\huge\selectfont
         Évaluation intermédiaire\\\vspace{0.5em}
-        \large{projet multidisciplinaire}\par}%
+        \large{Projet multidisciplinaire}\par}%
 \end{center}
 
-\infosheader{Yves Chevallier}{2021-05-09}{Les chocolats bleus}{Charriere}{Maxime}{EAI}
-\vskip 2em
-
+\infosheader{\projectName}{\proffessorName}{\thedate}{\studentName}{\studentFieldOfStudy}{\clientName}
+\section*{Évaluation}
 \begin{Form}
+
     \begin{tabularx}{\textwidth}{|X|c|c|} \hline
-        Critère d'évaluation                                              & Pondération      & Note        \\
+        \tr \textbf{Critère d'évaluation}                                 & \textbf{Pondération}                          & \textbf{Note}                                                                 \\
         \hline
 
-        \tr Organisation du projet                                        & \porg            & \sorg       \\[3ex]
+        \tr Organisation du projet                                        & \tfSum{worg}{"wo1,wo2,wo3,wo4,wo5"}           & \tfWeightedMean{sorg}{"wo1,wo2,wo3,wo4,wo5"}{"so1,so2,so3,so4,so5"}           \\[3ex]
         \hline
 
-        \hs Précision de la spécification                                 & \weight{p2}{10}  & \score{n2}  \\
-        \hs Validation de la spécification                                & \weight{p3}{10}  & \score{n3}  \\
-        \hs Planification du travail                                      & \weight{p4}{10}  & \score{n4}  \\
-        \hs Distribution efficace du travail                              & \weight{p5}{10}  & \score{n5}  \\
-        \hs Suivi régulier du projet                                      & \weight{p6}{10}  & \score{n6}  \\
+        \hs Précision de la spécification                                 & \weight{wo1}{10}                              & \score{so1}                                                                   \\
+        \hs Validation de la spécification                                & \weight{wo2}{10}                              & \score{so2}                                                                   \\
+        \hs Planification du travail                                      & \weight{wo3}{10}                              & \score{so3}                                                                   \\
+        \hs Distribution efficace du travail                              & \weight{wo4}{10}                              & \score{so4}                                                                   \\
+        \hs Suivi régulier du projet                                      & \weight{wo5}{10}                              & \score{so5}                                                                   \\
         \hline
 
-        \tr Communication                                                 & \pcom            & \scom       \\[3ex]
+        \tr Communication                                                 & \tfSum{wcom}{"wc1,wc2"}                       & \tfWeightedMean{scom}{"wc1,wc2"}{"sc1,sc2"}                                   \\[3ex]
         \hline
 
-        \hs Consultation régulière du professeur répondant et des experts & \weight{p8}{10}  & \score{n8}  \\
-        \hs Implication et collaboration de l'équipe                      & \weight{p9}{10}  & \score{n9}  \\
+        \hs Consultation régulière du professeur répondant et des experts & \weight{wc1}{10}                              & \score{sc1}                                                                   \\
+        \hs Implication et collaboration de l'équipe                      & \weight{wc2}{10}                              & \score{sc2}                                                                   \\
         \hline
 
-        \tr Technique                                                     & \weight{p10}{10} & \score{n10} \\[3ex]
+        \tr Technique                                                     & \tfSum{wtech}{"wt1,wt2"}                      & \tfWeightedMean{stech}{"wt1,wt2"}{"st1,st2"}                                  \\[3ex]
         \hline
 
-        \hs Adéquation et aboutissement du concept                        & \weight{p11}{10} & \score{n11} \\
-        \hs Pertinence des choix technologiques                           & \weight{p12}{10} & \score{n12} \\
+        \hs Adéquation et aboutissement du concept                        & \weight{wt1}{10}                              & \score{st1}                                                                   \\
+        \hs Pertinence des choix technologiques                           & \weight{wt2}{10}                              & \score{st2}                                                                   \\
         \hline
 
-        \tr Avancement                                                    & \weight{p13}{10} & \score{n13} \\[3ex]
+        \tr Avancement                                                    & \tfSum{wav}{"wa1"}                            & \tfWeightedMean{sav}{"wa1"}{"sa1"}                                            \\[3ex]
         \hline
 
-        \hs Respect du planning                                           & \weight{p14}{10} & \score{n14} \\
+        \hs Respect du planning                                           & \weight{wa1}{10}                              & \score{sa1}                                                                   \\
         \hline\hline
 
-        \tr \textbf{Évaluation globale}                                            & \textbf{\weight{p15}{10}} & \textbf{\score{n15}} \\[3ex]
+        \tr \textbf{Évaluation globale}                                   & \textbf{\tfSum{wglob}{"worg,wcom,wtech,wav"}} & \textbf{\tfWeightedMean{sglob}{"worg,wcom,wtech,wav"}{"sorg,scom,stech,sav"}} \\[3ex]
         \hline
     \end{tabularx}
 
-    \newcommand\clearrow{\global\let\rowmac\relax}
-    \newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
-    \newcolumntype{Y}{>{\centering\arraybackslash\rowmac}X}
-    %
-    \vskip 2em
-    \section*{Échelle d'évaluation}
+
     \clearrow
+    \section*{Échelle d'évaluation}
     \begin{tabularx}{\textwidth}{|*{6}{Y|}Y<{\clearrow}|} \hline
         \setrow{\bfseries} Excellent & Très bien & Bien      & Satisfaisant & Passable  & Échec     & Échec     \\ \hline
         A                            & B         & C         & D            & E         & FX        & F         \\ \hline
         5.8 à 6.0                    & 5.3 à 5.7 & 4.8 à 5.2 & 4.3 à 4.7    & 4.0 à 4.2 & 3.5 à 3.9 & 1.0 à 3.4 \\ \hline
     \end{tabularx}
-
-
-    \begin{tabularx}{\textwidth}{p{12cm}X}
-        \section*{Remarques} &                                             \\
-        \noindent\fbox{%
-            \parbox{12cm}{%
-                \TextField[maxlen=2,align=1,height=2cm,width=12cm,name=comment]{}
-
-        }}                   & \digsigfield{5cm}{2cm}{Teacher's signature} \\
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabularx}{\textwidth}{X p{5cm}}
+        \section*{Remarques}                                                                     & \section*{Signature}                        \\
+        \TextField[align=0,height=2cm,width=10cm,name=comment,multiline=true,donotscroll=true]{} & \digsigfield{5cm}{2cm}{Teacher's signature} \\
     \end{tabularx}
-
 \end{Form}
 \end{document}
