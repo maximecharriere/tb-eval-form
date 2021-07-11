@@ -1,0 +1,28 @@
+\documentclass[a4paper]{article}
+\usepackage{etoolbox}
+\usepackage{tabularx,booktabs}
+
+\def\addStudentRow#1/#2/#3!{& #1 & #2 & #3\\}
+\newcommand{\infosheader}[5]{
+  \renewcommand*\do[1]{\addStudentRow##1!}
+  \begin{tabularx}{\textwidth}{|l|X|l|l|}
+    \hline
+    \textbf{Titre du projet} & #1 & \textbf{Date}    & #3 \\
+    \hline
+    \textbf{Professeur}      & #2 & \textbf{Client}  & #5 \\
+    \hline
+    \textbf{Étudiants}       & \textbf{Nom} & \textbf{Prénom} & \textbf{Filière} \\
+    \docsvlist{#4}
+    \hline
+  \end{tabularx}
+}
+
+\newcommand{\projectName}{Les chocolats bleus}
+\newcommand{\proffessorName}{Yves Chevallier}
+\newcommand{\thedate}{2021-05-09}
+\newcommand{\studentInfos}{Title 1/Description 1/trois, Title 2/Description 2/trois}
+\newcommand{\clientName}{Enfant Surprise SA}
+
+\begin{document}
+\infosheader{\projectName}{\proffessorName}{\thedate}{\studentInfos}{\clientName}
+\end{document}

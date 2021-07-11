@@ -3,9 +3,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[textwidth=17cm,top=1cm,bottom=0.5cm]{geometry}
 \usepackage{hyperref}
+\usepackage{etoolbox}
 \usepackage{tabularx,booktabs}
 \usepackage{graphicx}
-\usepackage[french]{babel}
 \usepackage[table]{xcolor}
 \usepackage{tikz}
 \usepackage{multirow}
@@ -16,8 +16,7 @@
 \newcommand{\projectName}{Les chocolats bleus}
 \newcommand{\proffessorName}{Yves Chevallier}
 \newcommand{\thedate}{2021-05-09}
-\newcommand{\studentName}{Maxime Charrière}
-\newcommand{\studentFieldOfStudy}{EAI}
+\newcommand{\studentInfos}{Maxime/Charrière/EAI, Jessica/Schmid/EEM}
 \newcommand{\clientName}{Enfant Surprise SA}
 
 \setlength\parindent{0pt}
@@ -43,7 +42,7 @@
         \large{Projet multidisciplinaire}\par}%
 \end{center}
 
-\infosheader{\projectName}{\proffessorName}{\thedate}{\studentName}{\studentFieldOfStudy}{\clientName}
+\infosheader{\projectName}{\proffessorName}{\thedate}{\studentInfos}{\clientName}
 \section*{Évaluation}
 \begin{Form}
 

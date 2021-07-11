@@ -4,17 +4,19 @@
 %   1: TB Title 
 %   2: Proffessor name
 %   3: Date
-%   4: Student name
-%   5: Student's field of study
-%   6: Client name
-\newcommand{\infosheader}[6]{
+%   4: Students infos
+%   5: Client name
+\def\addStudentRow#1/#2/#3!{#1 & #2 & #3\\}
+\renewcommand*\do[1]{\addStudentRow#1!}
+\newcommand{\infosheader}[5]{
   \begin{tabularx}{\textwidth}{|l|X|l|l|}
     \hline
     \textbf{Titre du projet} & #1 & \textbf{Date}    & #3 \\
     \hline
-    \textbf{Professeur}      & #2 & \textbf{Client}  & #6 \\
+    \textbf{Professeur}      & #2 & \textbf{Client}  & #5 \\
     \hline
-    \textbf{Étudiants}       & #4 & \textbf{Filière} & #5 \\[1cm]
+    \textbf{Étudiants}       & \textbf{Nom} & \textbf{Prénom} & \textbf{Filière} \\
+    \docsvlist{#4}
     \hline
   \end{tabularx}
 }
