@@ -1,5 +1,7 @@
 \documentclass[a4paper]{article}
-
+% TODO \studentsInfos doesn't work with \docsvlist and have to be written directly in \infosheader arguments.
+% TODO Remove red border when the doc is signed
+% TODO Lock the possibility of modifying formulas in the form
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[textwidth=17cm,top=1cm,bottom=0.5cm]{geometry}
@@ -20,7 +22,7 @@
 \newcommand{\thedate}{2021-05-09}
 \newcommand{\clientName}{Enfant Surprise SA}
 \newcommand{\studentsInfos}{Maxime/Charriere/EAI,Jessica/Schmid/EEM,Jean/Demeusy/MI} % Format of the list: <std1_firstname>/<std1_name>/<std1_study>,<std2_firstname>/<std2_name>/<std2_study>
-% TODO \studentsInfos doesn't work with \docsvlist and have to be written directly in \infosheader arguments.
+
 
 \setlength\parindent{0pt}
 \allsectionsfont{\normalfont\sffamily\bfseries}
@@ -52,6 +54,7 @@
 
 %% Header
 \infosheader{\projectName}{\proffessorName}{\thedate}{Maxime/Charriere/EAI,Jessica/Schmid/EEM,Jean/Demeusy/MI}{\clientName}
+
 \section*{Évaluation}
 \begin{Form}
     \begin{tabularx}{\textwidth}{|X|c|c|} \hline
