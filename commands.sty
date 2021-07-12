@@ -6,14 +6,14 @@
 %   3: Date
 %   4: Students infos
 %   5: Client name
-\def\addStudentRow#1/#2/#3!{#1 & #2 & #3\\}
-\renewcommand*\do[1]{\addStudentRow#1!}
+\def\addStudentRow#1/#2/#3!{& #1 & #2 & #3\\}
 \newcommand{\infosheader}[5]{
+  \renewcommand*\do[1]{\addStudentRow##1!}
   \begin{tabularx}{\textwidth}{|l|X|l|l|}
     \hline
-    \textbf{Titre du projet} & #1 & \textbf{Date}    & #3 \\
+    \textbf{Titre du projet} & #1           & \textbf{Date}   & #3               \\
     \hline
-    \textbf{Professeur}      & #2 & \textbf{Client}  & #5 \\
+    \textbf{Professeur}      & #2           & \textbf{Client} & #5               \\
     \hline
     \textbf{Étudiants}       & \textbf{Nom} & \textbf{Prénom} & \textbf{Filière} \\
     \docsvlist{#4}

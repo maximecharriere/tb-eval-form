@@ -1,4 +1,5 @@
 \documentclass[a4paper]{article}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[textwidth=17cm,top=1cm,bottom=0.5cm]{geometry}
@@ -13,15 +14,18 @@
 \usepackage{digsig}
 \usepackage{commands}
 
+%% VARIABLES TO MODIFY 
 \newcommand{\projectName}{Les chocolats bleus}
 \newcommand{\proffessorName}{Yves Chevallier}
 \newcommand{\thedate}{2021-05-09}
-\newcommand{\studentInfos}{Maxime/Charrière/EAI, Jessica/Schmid/EEM}
 \newcommand{\clientName}{Enfant Surprise SA}
+\newcommand{\studentsInfos}{Maxime/Charriere/EAI,Jessica/Schmid/EEM,Jean/Demeusy/MI} % Format of the list: <std1_firstname>/<std1_name>/<std1_study>,<std2_firstname>/<std2_name>/<std2_study>
+% TODO \studentsInfos doesn't work with \docsvlist and have to be written directly in \infosheader arguments.
 
 \setlength\parindent{0pt}
 \allsectionsfont{\normalfont\sffamily\bfseries}
 
+%% Calculate all JS scripts at page opening
 \pdfpageattr{/AA << %additional actions for pages
     %on every page open event (/O), add a JavaScript action
     /O << /S/JavaScript /JS (this.calculateNow();) >>
@@ -29,6 +33,8 @@
 
 \begin{document}
 \thispagestyle{empty}
+
+%% HEIG-VD logo
 \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=north west,yshift=-1cm,xshift=2cm]%
     at (current page.north west)
@@ -36,16 +42,18 @@
 \end{tikzpicture}
 \fontfamily{lmss}\selectfont
 \vspace{2cm}
+
+%% Title
 \begin{center}
     {\usefont{T1}{lmss}{bx}{n}\huge\selectfont
         Évaluation intermédiaire\\\vspace{0.5em}
         \large{Projet multidisciplinaire}\par}%
 \end{center}
 
-\infosheader{\projectName}{\proffessorName}{\thedate}{\studentInfos}{\clientName}
+%% Header
+\infosheader{\projectName}{\proffessorName}{\thedate}{Maxime/Charriere/EAI,Jessica/Schmid/EEM,Jean/Demeusy/MI}{\clientName}
 \section*{Évaluation}
 \begin{Form}
-
     \begin{tabularx}{\textwidth}{|X|c|c|} \hline
         \tr \textbf{Critère d'évaluation}                                 & \textbf{Pondération}                          & \textbf{Note}                                                                 \\
         \hline
